@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gps_locator/pages/otp_page.dart';
-import '@/../../services/location_services.dart';
+import '../services/location_services.dart';
 import 'dart:async';
 
 class JourneyPage extends StatefulWidget {

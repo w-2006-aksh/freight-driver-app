@@ -21,12 +21,11 @@ When a transporter assigns a driver to a trip, the backend triggers an SMS conta
 - Active trip data is fetched immediately and loaded into the UI.
 - The active-trip state is persisted locally on the device as soon as it is retrieved.
 
-### Background GPS Tracking
+### Location Tracking During Transit
 
-The app runs a background service that periodically polls the device's coordinates.
+While the driver is on the in-transit screen, the app sends location updates to the backend at a fixed interval.
 
-- Location updates are collected at configured intervals.
-- Coordinates are transmitted to the backend whenever network connectivity is available.
+- Coordinates are sent to the trip location endpoint over HTTP.
 - The backend reverse-geocodes coordinates into timestamped, city-level checkpoints.
 - These checkpoints power the shipment tracking timeline displayed in the client dashboard.
 

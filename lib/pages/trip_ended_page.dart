@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '@/../home_page.dart';
+import 'package:gps_locator/pages/home_page.dart';
 
 class TripEndedPage extends StatelessWidget {
   const TripEndedPage({super.key});

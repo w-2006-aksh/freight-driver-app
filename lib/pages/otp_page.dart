@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gps_locator/config/api.dart';
 import 'package:pinput/pinput.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,9 +55,7 @@ class _OtpPageState extends State<OtpPage> {
       return;
     }
 
-    final url = Uri.parse(
-      "http://172.20.10.3:8000/api/trip/mark-as-delivered/${widget.bidNo}",
-    );
+    final url = ApiConfig.tripDelivery(widget.bidNo);
 
     try {
       final response = await http.post(

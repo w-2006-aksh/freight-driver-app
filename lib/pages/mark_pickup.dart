@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gps_locator/config/api.dart';
 import 'package:gps_locator/pages/journey_page.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -89,9 +90,7 @@ class _MarkPickupPageState extends State<MarkPickupPage> {
                                     return;
                                   }
 
-                                  final url = Uri.parse(
-                                    "http://172.20.10.3:8000/api/trip/mark-as-picked/${widget.bidNo}",
-                                  );
+                                  final url = ApiConfig.tripPickup(widget.bidNo);
 
                                   try {
                                     final response = await http.post(

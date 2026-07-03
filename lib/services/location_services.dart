@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../config/api.dart';
+
 Future<Position> getCurrentLocation() async {
   await Geolocator.requestPermission();
   return await Geolocator.getCurrentPosition(
@@ -35,8 +37,8 @@ Future<void> sendLocation(String bidNo) async {
 
   print("SENDING DUMMY LOCATION: $location");
 
-  await http.post(
-    Uri.parse("http://172.20.10.3:8000/api/trip/update-location/$bidNo"),
+  await http.patch(
+    ApiConfig.tripLocation(bidNo),
     headers: {
       "Authorization": "Bearer $token",
       "Content-Type": "application/json",
@@ -52,8 +54,8 @@ Future<void> sendLocation(String bidNo) async {
 
 //   final pos = await getCurrentLocation();
 
-//   await http.post(
-//     Uri.parse("http://172.20.10.3:8000/api/trip/update-location/$bidNo"),
+//   await http.patch(
+//     ApiConfig.tripLocation(bidNo),
 //     headers: {
 //       "Authorization": "Bearer $token",
 //       "Content-Type": "application/json",

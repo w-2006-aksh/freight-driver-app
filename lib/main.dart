@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:http/http.dart' as http;
 
+import 'config/api.dart';
 import 'pages/home_page.dart';
 import 'pages/journey_page.dart';
 import 'pages/mark_pickup.dart';
@@ -76,9 +77,7 @@ class _MyAppState extends State<MyApp> {
       final from = decoded['from'];
       final to = decoded['to'];
 
-      final url = Uri.parse(
-        "http://172.20.10.3:8000/api/trip/get-status/$bidNo",
-      );
+      final url = ApiConfig.tripStatus(bidNo);
 
       try {
         final response = await http.get(
